@@ -24,5 +24,7 @@ public class Reward {
     @JoinColumn(name = "user_id", referencedColumnName = "idUser")
     private User user;
 
+    @Enumerated(EnumType.STRING)
+    private RewardUser rewardLevel;
 
 }
