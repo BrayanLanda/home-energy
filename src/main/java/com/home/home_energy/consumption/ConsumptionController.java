@@ -5,11 +5,9 @@ import com.home.home_energy.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -44,5 +42,19 @@ public class ConsumptionController {
         Consumption savedConsumption = consumptionService.addConsumption(consumption);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedConsumption);
     }
+
+    //obtener el historial de consumo de un usuario
+    @GetMapping("/history/{userId}")
+    public ResponseEntity<List<Consumption>>getUserConsumptionHistory(@PathVariable Long userId){
+        //buscar el usuario por id
+        Optional<User>userOptional = userRepository.findById(userId.toString());
+        if (!userOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        User user = userOptional.get();
+        List<Consumption>consumptionsHistory = consumptionService.getUserConsumptionHistory(user);
+        return ResponseEntity.ok(consumptionsHistory);
+    }
+
 
 }
