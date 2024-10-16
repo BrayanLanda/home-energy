@@ -1,6 +1,7 @@
 package com.home.home_energy.user;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.home.home_energy.address.Address;
 import com.home.home_energy.consumption.Consumption;
@@ -39,11 +40,11 @@ public class User {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+    @JsonIgnore
     private List<Consumption> consumptions;
 
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+    @JsonIgnore
     private List<Reward> rewards;
 
 

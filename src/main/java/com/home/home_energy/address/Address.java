@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "addresses")
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -24,7 +24,4 @@ public class Address {
 
     @OneToOne(mappedBy = "address")
     private User user;
-
-
-
 }
