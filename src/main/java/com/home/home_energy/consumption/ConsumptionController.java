@@ -55,6 +55,4 @@ public class ConsumptionController {
         List<Consumption>consumptionsHistory = consumptionService.getUserConsumptionHistory(user);
         return ResponseEntity.ok(consumptionsHistory);
     }
-
-
 }
