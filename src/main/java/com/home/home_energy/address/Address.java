@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @Entity
+@Builder
 @Table(name = "address")
 public class Address {
 
@@ -17,7 +18,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCounter;
 
-    private String country;
+    private String country = "COL";
     private String city;
 
     private String street;

@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -31,7 +32,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "address_id",referencedColumnName = "idCounter")
@@ -47,5 +48,14 @@ public class User {
     @JsonIgnore
     private List<Reward> rewards;
 
-
+    public  User(UserRequest userRequest){
+        this.name = userRequest.getName();
+        this.email = userRequest.getEmail();
+        this.password = userRequest.getPassword();
+        this.address = Address.builder()
+                .country("COL")
+                .city(userRequest.getCity())
+                .street(userRequest.getStreet())
+                .build();
+    }
 }
