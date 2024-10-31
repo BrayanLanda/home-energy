@@ -23,7 +23,7 @@ public class RewardController {
 
     // Endpoint para obtener las recompensas de un usuario por su ID
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Reward>> getUserRewards(@PathVariable String userId) {
+    public ResponseEntity<List<Reward>> getUserRewards(@PathVariable Long userId) {
         // Verificar si el usuario existe
         Optional<User> userOptional = userRepository.findById(userId);
         if (!userOptional.isPresent()) {

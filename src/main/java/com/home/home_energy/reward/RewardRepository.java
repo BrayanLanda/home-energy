@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface RewardRepository extends JpaRepository<Reward,Long> {
     // Método para obtener recompensas por ID de usuario
-    List<Reward> findByUserIdUser(String idUser);
+    List<Reward> findByUserIdUser(Long idUser);
 }
