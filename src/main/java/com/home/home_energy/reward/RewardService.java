@@ -63,7 +63,7 @@ public class RewardService{
     }
 
     // Método para obtener las recompensas de un usuario por su ID
-    public List<Reward> getRewardsByUserId(String userId) {
+    public List<Reward> getRewardsByUserId(Long userId) {
         return rewardRepository.findByUserIdUser(userId);
     }
 }

@@ -24,8 +24,8 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String idUser;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idUser;
 
     private String name;
     private String email;

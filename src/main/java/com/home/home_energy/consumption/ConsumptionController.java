@@ -24,7 +24,7 @@ public class ConsumptionController {
     @PostMapping("/add")
     public ResponseEntity<Consumption>addConsumption(@RequestBody ConsumptionRequest consumptionRequest){
         //buscar el id del usuario
-        Optional<User>userOptional = userRepository.findById(consumptionRequest.getUserId().toString());
+        Optional<User>userOptional = userRepository.findById(consumptionRequest.getUserId());
         if (!userOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
@@ -47,7 +47,7 @@ public class ConsumptionController {
     @GetMapping("/history/{userId}")
     public ResponseEntity<List<Consumption>>getUserConsumptionHistory(@PathVariable Long userId){
         //buscar el usuario por id
-        Optional<User>userOptional = userRepository.findById(userId.toString());
+        Optional<User>userOptional = userRepository.findById(userId);
         if (!userOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }

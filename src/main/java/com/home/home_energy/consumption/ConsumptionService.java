@@ -22,7 +22,7 @@ public class ConsumptionService {
     public Consumption addConsumption(Consumption consumption){
         User user = consumption.getUser();
 
-        //verificar si ya existe un consumo registrado para el mes y año dadoo
+        //verificar si ya existe un consumo registrado para el mes y año dado
         Optional<Consumption>existingConsumption = consumptionRepository.findByUserAndMonthAndYear(
                 user,consumption.getMonth(),consumption.getYear()
         );
